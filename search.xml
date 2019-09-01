@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hexo+VPS搭建个人博客]]></title>
+    <url>%2F2019%2F09%2F01%2FHexo-VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F09%2F01%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Quick StartCreate a new postRun serverGenerate static filesDeploy to remote sites]]></content>
+  </entry>
+</search>

@@ -72,7 +72,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.weihuiqi.com/2019/09/01/Hexo-VPS搭建个人博客/" data-id="ck00dqk150000q1l3q2zkwqlr"
+      <a data-url="http://www.weihuiqi.com/2019/09/01/Hexo-VPS搭建个人博客/" data-id="ck00eedpe0000tml3w4dkkc67"
          class="article-share-link">Share</a>
       
     </footer>
@@ -96,6 +96,26 @@
 
   
     
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: [''],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
   
 
 </article>
@@ -152,7 +172,7 @@
       </li>
     
     <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
+      <a class="nav-item-link nav-item-search" title="搜索">
         <i class="fe fe-search"></i>
         Search
       </a>
