@@ -2,12 +2,12 @@
 <search>
   <entry>
     <title><![CDATA[python实现爬虫爬取数据]]></title>
-    <url>%2Fmain%2F2019%2F10%2F09%2Fpython%E5%AE%9E%E7%8E%B0%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E6%95%B0%E6%8D%AE%2F</url>
+    <url>%2F2019%2F10%2F09%2Fpython%E5%AE%9E%E7%8E%B0%E7%88%AC%E8%99%AB%E7%88%AC%E5%8F%96%E6%95%B0%E6%8D%AE%2F</url>
     <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Hexo+VPS搭建个人博客]]></title>
-    <url>%2Fmain%2F2019%2F09%2F01%2FHexo-vps%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-0%2F</url>
+    <url>%2F2019%2F09%2F01%2FHexo-vps%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-0%2F</url>
     <content type="text"><![CDATA[本地部署本地下载Node.js和git下载Node.js(推荐在官网下载，Mac用homebrew可能会出现问题)下载git（homebrew和官网均可） 安装HEXO$npm install hexo-cli -g 在blog目录下初始化博客界面，blog目录可以是任何自己想要的名字 $hexo init blog 进入blog目录并安装相关插件 $cd blognpm install安装完成后需要输入命令 $hexo g #渲染Source目录下文件的静态页面$hexo s #本地启用一个server测试博客效果 本地的博客效果可以在http://localhost:4000/查看效果 服务器的配置我的服务器环境试Ubuntu 以下代码均为Ubuntu环境下操作 安装Nginx$sudo apt-get install nginx 启动NginxNginx安装完成后需要手动启动 sudo systemctl start nginx 配置完成后使用浏览器访问服务器IP，如果出现一下界面表示成功。 配置虚拟主机虚拟主机（Virtual Host）可以在一台服务器上绑定多个域名，架设多个不同的网站，一般在开发机或者要部署多个小网站的服务器上需要配置虚拟主机。 创建新的网站目录Nginx默认把网页文件存在/var/www/html目录。为了方便，我们在/var/www/目录下为每一个站点创建一个文件夹。 $sudo mkdir -p /var/www/blog/html$sudo chown -R $USER:$USER /var/www/blog/html$sudo chmod -R 755 /var/www 在/var/www/blog/html/目录下创建index.html文件。写上以下内容，用于测试虚拟主机运行情况。 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt;Welcome to Blog!&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;Success! The Blog server block is working!&lt;/h1&gt; &lt;/body&gt;&lt;/html&gt; 创建虚拟主机配置文件在/etc/nginx/conf.d/创建虚拟主机配置文件blog.conf(我的服务器已经备案完成所以使用的是80端口，如果没有备案可以用8080端口代替) 12345678910111213server &#123; listen 80; listen [::]:80; root /var/www/blog/html; index index.html index.htm index.nginx-debian.html; server_name eliyar.biz www.eliyar.biz; location / &#123; try_files $uri $uri/ =404; &#125;&#125; 重启Nginx服务器，使服务器设定生效 $sudo systemctl restart nginx 修改本地host，验证结果（如果绑定域名到服务器这步可以跳过）在绑定域名到服务器前，需要修改本地host文件来测试。本地修改/etc/hosts文件。IP 域名能看到以下结果表示虚拟主机配置成功 部署HEXO到服务器Hexo可以使用git方式部署。 部署服务器环境首先在服务器上安装git $sudo apt-get install git 创建空白git仓库，并设置git hook $cd ~$mkdir blog.git &amp;&amp; cd blog.git$git init --bare 在/root/blog.git/hooks/post-receive以下脚本 12345678#!/bin/bashGIT_REPO=/root/blog.git #git仓库TMP_GIT_CLONE=/tmp/blogPUBLIC_WWW=/var/www/blog/html #网站目录rm -rf $&#123;TMP_GIT_CLONE&#125;git clone $GIT_REPO $TMP_GIT_CLONErm -rf $&#123;PUBLIC_WWW&#125;/*cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125; 赋予脚本的执行权限 $chmod +x post-receive 配置本机环境在博客目录下运行下面命令，安装git部署工具。 $npm install hexo-deployer-git --save 修改博客的配置文件_config.yml,修改deploy选项： 12345deploy: type: git message: update repo: s1: root@服务器IP:/root/blog.git/,master 然后运行以下代码部署到本地渲染网页服务器上。hexo gheox s 参考 Hexo更换主题]]></content>
       <tags>
         <tag>Hexo</tag>
@@ -15,7 +15,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <url>%2Fmain%2F2019%2F09%2F01%2Fhello-world%2F</url>
+    <url>%2F2019%2F09%2F01%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Quick StartCreate a new postRun serverGenerate static filesDeploy to remote sites]]></content>
   </entry>
 </search>
