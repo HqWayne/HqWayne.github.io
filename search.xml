@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Markdown笔记]]></title>
+    <url>%2F2020%2F11%2F30%2FMarkdown%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Markdown碎碎念1.首行缩进两格&amp;emsp;&amp;emsp;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[ML记录]]></title>
     <url>%2F2020%2F11%2F30%2FML%E8%AE%B0%E5%BD%95%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。线性模型基本形式：&emsp;&emsp;线性模型是通过训练一个对所有属性的线性组合来进行预测的函数，即： $$f(x) = w_1x_1 + w_2x_2 + … + w_dx_d + b$$ &emsp;&emsp;一般向量形式写成： $$f(x) = w^Tx + b$$ 线性回归&emsp;&emsp;线性回归是回归模型中的一种，其假设特征与目标值（label）之间线性相关，通过损失函数（loss函数）迭代求解loss值最小时的参数$w$和$b$,公式表达如下： $$f(x_i) = wx_i + b$$ 使得 $f(x_i) \approx y_i$ 损失函数（loss函数）1.1 均方误差（mean-square error,MSE):&emsp;&emsp;均方误差是回归任务中最常见的性能度量，以线性回归为例公式为： $$(w^,b^) = argmin\sum_{i=1}^m(f(x_i)-y_i)^2$$ $= argmin\sum_{i=1}^m(y_i-wx_i-b)$&emsp;&emsp;均方误差的几何意义对应了常用的欧几里得距离，因此可以用最小二乘法来使均方误差最小化。以线性回归为例，最小二乘法就是找到一条直线使所有样本到直线上的欧式距离之和最小。公式求解推导过程如下： 已知$E(w,b) = \sum_{i = 1}^m(y_i-wx_i -b)$,所以： &emsp;&emsp;]]></content>
   </entry>
   <entry>
     <title><![CDATA[python实现爬虫爬取数据]]></title>

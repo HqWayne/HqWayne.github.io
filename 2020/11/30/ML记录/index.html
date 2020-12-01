@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="article">
+    <meta name="description" content="本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。线性模型基本形式：&amp;emsp;&amp;emsp;线性模型是通过训练一个对所有属性的线性组合来进行预测的函数，即： $$f(x) = w_1x_1 + w_2x_2 + … + w_dx_d + b$$ &amp;emsp;&amp;emsp;一般向量形式写成： $$f(x) = w^Tx + b$$ 线性">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ML记录">
 <meta property="og:url" content="https://hqwayne.github.io/2020/11/30/ML记录/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。线性模型基本形式：&amp;emsp;&amp;emsp;线性模型是通过训练一个对所有属性的线性组合来进行预测的函数，即： $$f(x) = w_1x_1 + w_2x_2 + … + w_dx_d + b$$ &amp;emsp;&amp;emsp;一般向量形式写成： $$f(x) = w^Tx + b$$ 线性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-30T05:37:07.102Z">
+<meta property="og:updated_time" content="2020-11-30T13:17:08.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ML记录">
+<meta name="twitter:description" content="本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。线性模型基本形式：&amp;emsp;&amp;emsp;线性模型是通过训练一个对所有属性的线性组合来进行预测的函数，即： $$f(x) = w_1x_1 + w_2x_2 + … + w_dx_d + b$$ &amp;emsp;&amp;emsp;一般向量形式写成： $$f(x) = w^Tx + b$$ 线性">
     
     
         
@@ -65,6 +68,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2020/11/30/Markdown笔记/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
         
         <li><a class="icon" href="/2019/10/09/python实现爬虫爬取数据/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
         
@@ -93,7 +98,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。"><span class="toc-number">1.</span> <span class="toc-text">本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性模型"><span class="toc-number"></span> <span class="toc-text">线性模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本形式："><span class="toc-number">1.</span> <span class="toc-text">基本形式：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性回归"><span class="toc-number"></span> <span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#损失函数（loss函数）"><span class="toc-number"></span> <span class="toc-text">损失函数（loss函数）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-均方误差（mean-square-error-MSE"><span class="toc-number"></span> <span class="toc-text">1.1 均方误差（mean-square error,MSE):</span></a>
     </div>
   </span>
 </div>
@@ -127,7 +132,18 @@
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h4 id="本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。"><a href="#本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。" class="headerlink" title="本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。"></a>本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。</h4><h1 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h1><h4 id="基本形式："><a href="#基本形式：" class="headerlink" title="基本形式："></a>基本形式：</h4><p>&emsp;&emsp;线性模型是通过训练一个对所有属性的线性组合来进行预测的函数，即：</p>
+<p>$$f(x) = w_1x_1 + w_2x_2 + … + w_dx_d + b$$</p>
+<p>&emsp;&emsp;一般向量形式写成：</p>
+<p>$$f(x) = w^Tx + b$$</p>
+<h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>&emsp;&emsp;线性回归是回归模型中的一种，其假设特征与目标值（label）之间线性相关，通过损失函数（loss函数）迭代求解loss值最小时的参数$w$和$b$,公式表达如下：</p>
+<p>$$f(x_i) = wx_i + b$$ 使得 $f(x_i) \approx y_i$</p>
+<h2 id="损失函数（loss函数）"><a href="#损失函数（loss函数）" class="headerlink" title="损失函数（loss函数）"></a>损失函数（loss函数）</h2><h3 id="1-1-均方误差（mean-square-error-MSE"><a href="#1-1-均方误差（mean-square-error-MSE" class="headerlink" title="1.1 均方误差（mean-square error,MSE):"></a>1.1 均方误差（mean-square error,MSE):</h3><p>&emsp;&emsp;均方误差是回归任务中最常见的性能度量，以线性回归为例公式为：</p>
+<p>$$(w^<em>,b^</em>) = argmin\sum_{i=1}^m(f(x_i)-y_i)^2$$</p>
+<pre><code>$= argmin\sum_{i=1}^m(y_i-wx_i-b)$</code></pre><p>&emsp;&emsp;均方误差的几何意义对应了常用的欧几里得距离，因此可以用最小二乘法来使均方误差最小化。以线性回归为例，最小二乘法就是找到一条直线使所有样本到直线上的欧式距离之和最小。公式求解推导过程如下：</p>
+<p>已知$E(w,b) = \sum_{i = 1}^m(y_i-wx_i -b)$,所以：</p>
+<p>&emsp;&emsp;</p>
+
   </div>
 </article>
 
@@ -153,7 +169,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。"><span class="toc-number">1.</span> <span class="toc-text">本篇为深度学习入门篇，内容包括线性回归、逻辑（logitc）回归、bp神经网络网络等模型的原理、公式推导及代码实现。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性模型"><span class="toc-number"></span> <span class="toc-text">线性模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本形式："><span class="toc-number">1.</span> <span class="toc-text">基本形式：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性回归"><span class="toc-number"></span> <span class="toc-text">线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#损失函数（loss函数）"><span class="toc-number"></span> <span class="toc-text">损失函数（loss函数）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-均方误差（mean-square-error-MSE"><span class="toc-number"></span> <span class="toc-text">1.1 均方误差（mean-square error,MSE):</span></a>
     </div>
 
     <div id="share-footer" style="display: none">
